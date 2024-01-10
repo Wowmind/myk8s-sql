@@ -1,9 +1,12 @@
+
+//create a vpc etwork
 resource "google_compute_network" "custom" {
   name          = "web"
   auto_create_subnetworks = false
   routing_mode = "GLOBAL"
 }
 
+// create the web subnet for gke acess
 resource "google_compute_subnetwork" "web" {
   name          = "web"
   ip_cidr_range = "10.10.10.0/24"
@@ -20,6 +23,17 @@ resource "google_compute_subnetwork" "web" {
         ip_cidr_range = "10.1.0.0/20"
     }
   ]
+
+  private_ip_google_access = true
+}
+
+//create a second subnet for dataflow
+
+resource "google_compute_subnetwork" "data" {
+  name          = "data"
+  ip_cidr_range = "10.20.10.0/24"
+  network       = google_compute_network.custom.id
+  region        = var.region
 
   private_ip_google_access = true
 }
