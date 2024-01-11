@@ -26,5 +26,5 @@ resource "google_compute_firewall" "web" {
 
   priority = 1000
 
-  source_ranges = var.authorized_source_ranges
+  source_ranges = ["10.0.0.0/24"]
 }

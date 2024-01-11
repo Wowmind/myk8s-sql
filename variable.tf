@@ -15,5 +15,6 @@ variable "zone" {
 variable "authorized_source_ranges" {
   type        = list(string)
   description = "Addresses or CIDR blocks which are allowed to connect to GKE API Server."
+  default = [ "10.0.0.0 -10.10.10.253" ]
 }
 
