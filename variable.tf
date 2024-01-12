@@ -24,7 +24,7 @@ variable "gke_master_ipv4_cidr_block" {
 }
 variable "mysql_location_preference" {
   type = string
-  default = "europe-west1-b"
+  default = "us-central1-b"
 }
 
 variable "mysql_machine_type" {
